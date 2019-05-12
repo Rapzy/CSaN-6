@@ -9,29 +9,32 @@ namespace Server
 {
     public class Tasks
     {
-        public static void SendBlock(string fileName, int offset, int length)
+        public static byte[] SendBlock(string fileName, int offset, int length)
         {
             try
             {
-                using (FileStream fsSource = File.OpenRead(@"C:\Files\" + fileName))
+                using (FileStream fsSource = File.OpenRead(@"C:\Files\Server" + fileName))
                 {
                     if (length > fsSource.Length | length < 0)
                         length = (int)fsSource.Length;
-                    byte[] array = new byte[length];
+                    byte[] result = new byte[length];
                     try
                     {
                         fsSource.Seek(offset, SeekOrigin.Begin);
-                        fsSource.Read(array, 0, length);
+                        fsSource.Read(result, 0, length);
+                        return result;
                     }
                     catch
                     {
                         Console.WriteLine("Ошибка чтения из файла");
+                        return null;
                     }
                 }
             }
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Файл не найден");
+                return null;
             }
         }
     }
