@@ -34,9 +34,9 @@ namespace Server
                 if (request is RequestFile)
                 {
                     RequestFile req = (RequestFile)request;
-                    byte[] response = Tasks.SendBlock(req.FileName, req.Offset, req.Offset);
+                    byte[] response = Tasks.SendBlock(req.FileName, req.Offset, req.Length);
                     netStream.Write(response, 0, response.Length);
-                    Console.WriteLine("Sended {0} bytes. From {1}", response.Length, "FileName");
+                    Console.WriteLine("Sended {0} bytes from {1}", response.Length, req.FileName);
                 }
             }
             netStream.Close();

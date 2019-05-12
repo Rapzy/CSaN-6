@@ -13,7 +13,7 @@ namespace Server
         {
             try
             {
-                using (FileStream fsSource = File.OpenRead(@"C:\Files\Server" + fileName))
+                using (FileStream fsSource = File.OpenRead(@"C:\Files\Server\" + fileName))
                 {
                     if (length > fsSource.Length | length < 0)
                         length = (int)fsSource.Length;
