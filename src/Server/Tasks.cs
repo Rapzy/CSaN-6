@@ -9,7 +9,7 @@ namespace Server
 {
     public class Tasks
     {
-        public static byte[] SendBlock(string fileName, int offset, int length)
+        public static byte[] ReadBlock(string fileName, int offset, int length)
         {
             try
             {
@@ -36,6 +36,13 @@ namespace Server
                 Console.WriteLine("Файл не найден");
                 return null;
             }
+        }
+        public static byte[] GetTime()
+        {
+            byte[] result;
+            string timeNow = (DateTime.Now).ToString();
+            result = Encoding.UTF8.GetBytes(timeNow);
+            return result;
         }
     }
 }
