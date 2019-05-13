@@ -30,4 +30,10 @@ namespace Server
         }
 
     }
+    [Serializable]
+    public class RequestDisconnect : Request
+    {
+        public RequestDisconnect() : base("RequestDisconnect") {}
+
+    }
 }
